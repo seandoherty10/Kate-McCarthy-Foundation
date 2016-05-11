@@ -1,0 +1,23 @@
+.item img{
+height:400px;
+}
+.login{
+text-align: center;
+color:cornflowerblue;
+background-color: rgb(237,237,237)
+}
+.login input{
+display: block;
+margin:0 auto;
+margin-top:15px;
+border-color:pink;
+}
+.carousel-caption {
+    top: 20px;
+    bottom: auto;
+    float:left;
+}
+.carousel-caption h3{
+text-shadow: 5px black;
+
+}

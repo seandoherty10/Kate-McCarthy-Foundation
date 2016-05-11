@@ -1,0 +1,36 @@
+h1 {
+    color: #D133FF;
+    text-align: center;
+    font-family: "Optima";
+    font-size: 45px;
+    margin-top:45px;
+}
+
+ #p1 {
+   font-family: "Optima";
+    font-size: 17px;
+    color: black;
+}
+
+h2 {
+	color: #D133FF;
+    text-align: left;
+    font-family: "Optima";
+    font-size: 30px;
+}
+
+
+#p2 {
+	color: white;
+	font-family: "Optima";
+	text-align: justify;
+	font-size: 18px;
+}
+img{
+    width:200px;
+    margin-left: 20px;
+    border-radius:7px;
+}
+.row{
+    width: 100% !important;
+}
