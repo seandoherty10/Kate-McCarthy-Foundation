@@ -38,42 +38,43 @@
  	}
 
 </style>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-		google.load("visualization", '1', {packages:['corechart']});
-		google.load("gdata", "1");
-		google.charts.setOnLoadCallback(readData);
-
-
+	
+<script>
 	function readData() {
-		var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/15Ty5hu9H6tpkwXp5QenGgkckQIxbGsSvNnI7YBB5YrY/gviz/tq?tq=select%20B");
+	console.log("Hello");
+		var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/15Ty5hu9H6tpkwXp5QenGgkckQIxbGsSvNnI7YBB5YrY/gviz/tq?tq=select%20C"); //this link to my spreadsheet isn't working
+
 		query.send(handleQueryResponse);
+
 	}
 
 
 	function handleQueryResponse(response) {
-  	var data = response.getDataTable();
-  	console.log(data);
-  	var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-		  chart.draw(data, { legend: { position: 'none' } });
+		console.log("Hi");
+  		var data = response.getDataTable();
+  		console.log(data);
+  		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+		 	chart.draw(data, { legend: { position: 'none' } });
+
+
+	drawChart();
+
 	}
 
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			['Time', 'DonationAmount'],
+			[Time, Donation]
+	
+])};
 
-	 
-
-
-
-
-
-
-
+		var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values")); //says that google is not defined
+    	chart.draw(view, options);
 
 </script>
 </head>
 
 <body>
-
-
 	<script src ="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<fieldset id="myFieldset">
 	<legend id="myLegend">Donate Here</legend>
@@ -109,6 +110,14 @@
 
 
 });
+</script>
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.load("visualization", '1', {packages:['corechart']});
+		google.charts.setOnLoadCallback(readData());
+
 
 
 </script>
