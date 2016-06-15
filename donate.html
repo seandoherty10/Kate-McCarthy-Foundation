@@ -2,18 +2,15 @@
 <head>
 <link rel="stylesheet" href="stylesheet.css">
 <title>Kate McCarthy Foundation</title>
-
 	<ul>
   		<li><a href="home.html">Home</a></li>
   		<li><a href="about.html">About</a></li>
   		<li><a href="donate.html">Donate</a></li>
 	</ul>
-
 <style>
  	#myForm {
 		position: relative;
 		padding-top: 0px;
-
  	}
 
  	#myLegend {
@@ -22,7 +19,6 @@
     	font-family: Georgia;
     	font-size: 15px;
     	max-height: 20px;
-
  	}
 
  	#myFieldset {
@@ -33,10 +29,7 @@
  		max-width:250px;
  		max-height: 250px;
  		border: 10px solid;
-
-
  	}
-
 </style>
 	
 <script>
@@ -48,24 +41,19 @@
 
 	}
 
-
 	function handleQueryResponse(response) {
 		console.log("Hi");
   		var data = response.getDataTable();
   		console.log(data);
   		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
 		 	chart.draw(data, { legend: { position: 'none' } });
-
-
 	drawChart();
-
 	}
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
 			['Time', 'DonationAmount'],
 			[Time, Donation]
-	
 ])};
 
 		var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values")); //says that google is not defined
@@ -86,41 +74,30 @@
 	<input id="donationInput" type="number" placeholder="$" name="donation"><br><br>
 	<!-- validates that it is a number being put in instead of a letter for the donation value -->
 	<button id=="formSubmit" type="submit">Submit</button>
-
-
-	</fieldset>
-	
 	</form>
+	</fieldset>
 
-<iframe src"#" id="no-target" name="no-target" style ="visibility:hidden"></iframe>
+	<iframe src"#" id="no-target" name="no-target" style ="visibility:hidden"></iframe>
 <script>
 	$('#myForm').on('submit', function(){
-
-	var baseURL = "https://docs.google.com/a/greenwichschools.org/forms/d/155UEvOSKPqdt53-4-r4VS6Y16hZbhi-nW9usdJ5KdnU/formResponse?";
-	var submitRef = "&submit=Submit";
-	var theirUsername = encodeURIComponent($("#usernameInput").val());
-	var usernameID = "entry_2115707289";
-	var theirDonation = encodeURIComponent($("#donationInput").val());
-	var donationID = "entry_12591762";
-
-	var submitURL = (baseURL + usernameID + "=" + theirUsername + "&" +donationID + "=" + theirDonation + submitRef);
-	console.log(submitURL);
-	$(this)[0].action=submitURL;
-	$('#usernameInput').addClass('active').val("Thank you!");
-
-
+		var baseURL = "https://docs.google.com/a/greenwichschools.org/forms/d/155UEvOSKPqdt53-4-r4VS6Y16hZbhi-nW9usdJ5KdnU/formResponse?";
+		var submitRef = "&submit=Submit";
+		var theirUsername = encodeURIComponent($("#usernameInput").val());
+		var usernameID = "entry_2115707289";
+		var theirDonation = encodeURIComponent($("#donationInput").val());
+		var donationID = "entry_12591762";
+		var submitURL = (baseURL + usernameID + "=" + theirUsername + "&" +donationID + "=" + theirDonation + submitRef);
+		console.log(submitURL);
+		$(this)[0].action=submitURL;
+		$('#usernameInput').addClass('active').val("Thank you!");																														
 });
 </script>
-
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
-	console.log('another hello');
+		console.log('another hello');
 		google.load("visualization", '1', {packages:['corechart']});
 		google.charts.setOnLoadCallback(readData());
-
-
-
-</script>
+	</script>
 </body>
 </html>
