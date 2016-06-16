@@ -2,18 +2,15 @@
 <head>
 <link rel="stylesheet" href="stylesheet.css">
 <title>Kate McCarthy Foundation</title>
-
 	<ul>
   		<li><a href="home.html">Home</a></li>
   		<li><a href="about.html">About</a></li>
   		<li><a href="donate.html">Donate</a></li>
 	</ul>
-
 <style>
  	#myForm {
 		position: relative;
 		padding-top: 0px;
-
  	}
 
  	#myLegend {
@@ -22,7 +19,6 @@
     	font-family: Georgia;
     	font-size: 15px;
     	max-height: 20px;
-
  	}
 
  	#myFieldset {
@@ -33,40 +29,37 @@
  		max-width:250px;
  		max-height: 250px;
  		border: 10px solid;
-
-
  	}
-
 </style>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-		google.load("visualization", '1', {packages:['corechart']});
-		google.load("gdata", "1");
-		google.charts.setOnLoadCallback(readData);
-
-
-	function readData() {
-		var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/15Ty5hu9H6tpkwXp5QenGgkckQIxbGsSvNnI7YBB5YrY/gviz/tq?tq=select%20B");
-		query.send(handleQueryResponse);
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script> 
+	<script type="text/javascript"> 
+	google.load("visualization", '1', {packages:['corechart']}); 
+	google.load("gdata", "1");
+	google.setOnLoadCallback(readData);  
+		function readData() {
+		  var query = new google.visualization.Query( 
+		  'https://docs.google.com/spreadsheets/d/15Ty5hu9H6tpkwXp5QenGgkckQIxbGsSvNnI7YBB5YrY/gviz/tq?tq=select%20C');
+		  query.send(handleQueryResponse);
+		}
+		
+		function handleQueryResponse(response) { // This is enacted when the query response is returned.  If the query was successful, the response is the data table.  If the query failed, an error is returned, no table
+		  if (response.isError()) {
+		    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+		    return; //Alert the user with the error code and return to the place where this function was called
+		  }
+		  var data = response.getDataTable();
+		  data.insertColumn(0,'number');
+		  var csvData = google.visualization.dataTableToCsv(data);
+		  console.log(csvData);
+		  for (var i = 0; i<data.getNumberOfRows(); i++){console.log(i);data.setCell(i,0,i);}
+		  var chart = new google.visualization.ColumnChart(document.getElementById('amchannChart'));
+		  chart.draw(data,{legend:{position: 'none'}});
 	}
-
-
-	function handleQueryResponse(response) {
-  	var data = response.getDataTable();
-  	console.log(data);
-  	var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-		  chart.draw(data, { legend: { position: 'none' } });
-	}
-
-
-
 
 </script>
 </head>
 
 <body>
-
-
 	<script src ="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<fieldset id="myFieldset">
 	<legend id="myLegend">Donate Here</legend>
@@ -78,32 +71,26 @@
 	<input id="donationInput" type="number" placeholder="$" name="donation"><br><br>
 	<!-- validates that it is a number being put in instead of a letter for the donation value -->
 	<button id=="formSubmit" type="submit">Submit</button>
-
-
-	</fieldset>
-	
 	</form>
+	</fieldset>
 
-<iframe src"#" id="no-target" name="no-target" style ="visibility:hidden"></iframe>
+	<iframe src"#" id="no-target" name="no-target" style ="visibility:hidden"></iframe>
 <script>
 	$('#myForm').on('submit', function(){
-
-	var baseURL = "https://docs.google.com/a/greenwichschools.org/forms/d/155UEvOSKPqdt53-4-r4VS6Y16hZbhi-nW9usdJ5KdnU/formResponse?";
-	var submitRef = "&submit=Submit";
-	var theirUsername = encodeURIComponent($("#usernameInput").val());
-	var usernameID = "entry_2115707289";
-	var theirDonation = encodeURIComponent($("#donationInput").val());
-	var donationID = "entry_12591762";
-
-	var submitURL = (baseURL + usernameID + "=" + theirUsername + "&" +donationID + "=" + theirDonation + submitRef);
-	console.log(submitURL);
-	$(this)[0].action=submitURL;
-	$('#usernameInput').addClass('active').val("Thank you!");
-
-
+		var baseURL = "https://docs.google.com/a/greenwichschools.org/forms/d/155UEvOSKPqdt53-4-r4VS6Y16hZbhi-nW9usdJ5KdnU/formResponse?";
+		var submitRef = "&submit=Submit";
+		var theirUsername = encodeURIComponent($("#usernameInput").val());
+		var usernameID = "entry_2115707289";
+		var theirDonation = encodeURIComponent($("#donationInput").val());
+		var donationID = "entry_12591762";
+		var submitURL = (baseURL + usernameID + "=" + theirUsername + "&" +donationID + "=" + theirDonation + submitRef);
+		console.log(submitURL);
+		$(this)[0].action=submitURL;
+		$('#usernameInput').addClass('active').val("Thank you!");																														
 });
-
-
-</script>
+		console.log('another hello');
+//		google.charts.setOnLoadCallback(readData());
+	</script>
+	<span id="amchannChart"></span>
 </body>
 </html>
