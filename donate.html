@@ -24,13 +24,13 @@
 <title>Kate McCarthy Foundation</title>
 
 <p> </p>
+<img src='lake.jpg' style='position: absolute; width: 600px; margin-left: 300px; margin-top: 100px;'>
 
 <style>
  	#myForm {
 		position: relative;
 		padding-top: 0px;
  	}
-
  	#myFieldset {
  		padding-top: 25px;
  		margin-left: 25px;
@@ -38,7 +38,6 @@
  		max-height: 250px;
  	
  	}
-
  	p {
  		padding-top: 50px;
  		margin-left: 25px;
@@ -51,13 +50,12 @@
 	<script type="text/javascript"> 
 	google.load("visualization", '1', {packages:['corechart']}); 
 	google.load("gdata", "1");
-	google.setOnLoadCallback(readData);  
+	google.setOnLoadCallback(readData); 
 
 		function readData() {
 			var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/15Ty5hu9H6tpkwXp5QenGgkckQIxbGsSvNnI7YBB5YrY/gviz/tq');
 				query.setQuery('select C');  //Changed the way this query is called...just making it two parts.  
 			query.send(handleQueryResponse);
-
 		}
 
 		function handleQueryResponse(response) { 
@@ -65,7 +63,6 @@
 		    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
 		    return; //Alert the user with the error code and return to the place where this function was called
 		}
-
 			var data = response.getDataTable();
 			var csvData = google.visualization.dataTableToCsv(data);
 			var goal = 2000; //sets the goal....make it any number you wish
@@ -73,7 +70,6 @@
 			var total = 0; //this will keep the tally of the donations
 			for (var i = 0; i<csvData.length; i++){total+=Number(csvData[i])} //total the donations
         
-
         	// Set chart options
         	var options = {
           		theme: 'maximized',
@@ -91,17 +87,14 @@
           			colors:['blue', 'white'],
           			dataOpacity: 0.7,
         	};
-
 			var newData = google.visualization.arrayToDataTable([
         	['Donations', 'Achieved', 'Remaining'],
         	['Donations', total, goal-total]
     		
     		]);
-
         	var chart = new google.visualization.ColumnChart(document.getElementById('amchannChart'));
         	chart.draw(newData, options);
 		}
-
 </script>
 </head>
 
@@ -162,8 +155,7 @@
 		$('#usernameInput').addClass('active').val("Thank you!");	
 		readData();		//by adding this, the chart updates when a donation is made.																											
 });
-
 </script>
-	<span id="amchannChart" style='position: absolute; left: 350px; top: 100px'></span>
+	<span id="amchannChart" style='position: absolute; left: 1000px; top: 100px'></span>
 </body>
 </html>
