@@ -29,14 +29,14 @@
 		padding-top: 0px;
  	}
 
- 	#myLegend {
+ 	/*#myLegend {
  		position: relative;
     	color: #71887A;
     	font-family: Georgia;
     	font-size: 15px;
     	max-height: 20px;
  	}
-
+*/
  	#myFieldset {
  		background-color: white;
  		padding-top: 100px;
@@ -70,7 +70,7 @@
 
 			var data = response.getDataTable();
 			var csvData = google.visualization.dataTableToCsv(data);
-			var goal = 1500; //sets the goal....make it any number you wish
+			var goal = 2000; //sets the goal....make it any number you wish
 			csvData=csvData.split('\n'); //the csv data had end of line characters...split on them to make this into an array
 			var total = 0; //this will keep the tally of the donations
 			for (var i = 0; i<csvData.length; i++){total+=Number(csvData[i])} //total the donations
